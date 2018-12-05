@@ -11,6 +11,8 @@ class Polygon : public Shape
     double circumference();
     ObjectPosition position();
     bool isConvex();
+    Polygon& operator=(const Polygon& polygon);
+    Polygon& operator+(ObjectPosition position);
 };
 
 #endif // !POLYGON_H

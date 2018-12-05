@@ -5,9 +5,10 @@
 class Line : public Shape
 {
     public:
-    Line(double *xCoord, double *yCoord);
+    Line(double *xCoord, double *yCoord, int pointCount);
     std::string getType();
     ObjectPosition position();
+    Line& operator=(const Line& line);
    
 };
 

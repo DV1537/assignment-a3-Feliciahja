@@ -2,10 +2,11 @@
 #include <iostream>
 #include <cmath>
 
-Triangle::Triangle(double *xCoord, double *yCoord)
+Triangle::Triangle(double *xCoord, double *yCoord, int pointCount)
 {
     this -> xCoord = xCoord;
     this -> yCoord = yCoord;
+    this -> pointCount = pointCount;
 }
 
 std::string Triangle::getType()
@@ -76,4 +77,26 @@ bool Triangle::isConvex()
     return true;
 }
 
+Triangle& Triangle::operator=(const Triangle &triangle)
+{
+    if(this == &triangle) 
+	{	
+        return *this;
+	}
+    if(pointCount > 0)
+    {
+        delete [] xCoord;
+        delete [] yCoord;
+    }
+    pointCount = triangle.pointCount;
+    xCoord = new double[pointCount];
+    yCoord = new double[pointCount];
+    
+    for(int index = 0; index < pointCount; index++)
+    {
+        xCoord[index] = triangle.xCoord[index];
+        yCoord[index] = triangle.yCoord[index];
+    }
+    return *this;
 
+}

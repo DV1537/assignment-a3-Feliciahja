@@ -111,3 +111,62 @@ bool Polygon::isConvex()
 
 }
 
+Polygon& Polygon::operator=(const Polygon &polygon)
+{
+    if(this == &polygon) 
+	{	
+        return *this;
+	}
+    if(pointCount > 0)
+    {
+        delete [] xCoord;
+        delete [] yCoord;
+    }
+    pointCount = polygon.pointCount;
+    xCoord = new double[pointCount];
+    yCoord = new double[pointCount];
+
+    for(int index = 0; index < pointCount; index++)
+    {
+        xCoord[index] = polygon.xCoord[index];
+        yCoord[index] = polygon.yCoord[index];
+    }
+    return *this;
+}
+
+Polygon& Polygon::operator+(ObjectPosition position)
+{
+    pointCount += 1;
+    
+    double *tempX = new double[pointCount];
+    
+    for(int i = 0; i < (pointCount - 1); i++)
+    {
+        tempX[i] = xCoord[i];
+    }
+    tempX[pointCount - 1] = position.x;
+    delete [] xCoord;
+    xCoord = tempX; 
+    tempX = nullptr;
+
+    double *tempY = new double[pointCount];
+    
+    for(int i = 0; i < (pointCount - 1); i++)
+    {
+        tempY[i] = yCoord[i];
+    }
+    tempY[pointCount - 1] = position.y;
+    delete [] yCoord;
+    yCoord = tempY; 
+    tempY = nullptr;
+
+    return *this;
+}
+
+
+
+
+
+
+
+
