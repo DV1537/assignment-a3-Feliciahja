@@ -6,8 +6,14 @@
 
 Polygon::Polygon(double *xCoord, double *yCoord, int pointCount)
 {
-    this -> xCoord = xCoord;
-    this -> yCoord = yCoord;
+    this -> xCoord = new double[pointCount];
+    this -> yCoord = new double[pointCount];
+    
+    for(int i = 0; i < pointCount; i++)
+    {
+        this -> xCoord[i] = xCoord[i];
+        this -> yCoord[i] = yCoord[i];
+    }
     this -> pointCount = pointCount;
 }
 
