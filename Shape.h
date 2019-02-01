@@ -22,7 +22,7 @@ class Shape
     virtual bool isConvex();
     virtual ObjectPosition position() = 0;
     double distance(Shape* s);
-    virtual Shape &operator+(const Shape &s);
+    Shape &operator+(const Shape &s);
     friend std::ostream &operator<<(std::ostream &streamobj, const Shape &s);
     ~Shape();
 
